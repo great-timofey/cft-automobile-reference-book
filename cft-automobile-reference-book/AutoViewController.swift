@@ -1,5 +1,5 @@
 //
-//  EditAutoViewController.swift
+//  AutoViewController.swift
 //  cft-automobile-reference-book
 //
 //  Created by Тимофей Твердохлебов on 2/15/19.
@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
-class EditAutoViewController: UIViewController {
+class AutoViewController: UIViewController {
+  @IBOutlet weak var header: UINavigationItem!
   
 }

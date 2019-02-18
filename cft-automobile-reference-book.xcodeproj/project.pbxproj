@@ -13,7 +13,9 @@
 		A534BF6022167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A534BF5E22167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld */; };
 		A534BF6222167E090018ED28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A534BF6122167E090018ED28 /* Assets.xcassets */; };
 		A534BF6522167E090018ED28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A534BF6322167E090018ED28 /* LaunchScreen.storyboard */; };
-		A534BF6D221685B80018ED28 /* EditAutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF6C221685B80018ED28 /* EditAutoViewController.swift */; };
+		A534BF6D221685B80018ED28 /* AutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF6C221685B80018ED28 /* AutoViewController.swift */; };
+		A534BF6F2216B4870018ED28 /* Autos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF6E2216B4870018ED28 /* Autos.swift */; };
+		A534BF712216B4CB0018ED28 /* Auto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF702216B4CB0018ED28 /* Auto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,9 @@
 		A534BF6122167E090018ED28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A534BF6422167E090018ED28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A534BF6622167E090018ED28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A534BF6C221685B80018ED28 /* EditAutoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAutoViewController.swift; sourceTree = "<group>"; };
+		A534BF6C221685B80018ED28 /* AutoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoViewController.swift; sourceTree = "<group>"; };
+		A534BF6E2216B4870018ED28 /* Autos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autos.swift; sourceTree = "<group>"; };
+		A534BF702216B4CB0018ED28 /* Auto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,8 @@
 		A534BF4B22167E080018ED28 = {
 			isa = PBXGroup;
 			children = (
+				A534BF6E2216B4870018ED28 /* Autos.swift */,
+				A534BF702216B4CB0018ED28 /* Auto.swift */,
 				A534BF5622167E080018ED28 /* cft-automobile-reference-book */,
 				A534BF5522167E080018ED28 /* Products */,
 			);
@@ -63,7 +69,7 @@
 				A534BF5B22167E080018ED28 /* Main.storyboard */,
 				A534BF6122167E090018ED28 /* Assets.xcassets */,
 				A534BF6322167E090018ED28 /* LaunchScreen.storyboard */,
-				A534BF6C221685B80018ED28 /* EditAutoViewController.swift */,
+				A534BF6C221685B80018ED28 /* AutoViewController.swift */,
 				A534BF6622167E090018ED28 /* Info.plist */,
 				A534BF5E22167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld */,
 			);
@@ -141,8 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A534BF6F2216B4870018ED28 /* Autos.swift in Sources */,
 				A534BF5A22167E080018ED28 /* MainViewController.swift in Sources */,
-				A534BF6D221685B80018ED28 /* EditAutoViewController.swift in Sources */,
+				A534BF712216B4CB0018ED28 /* Auto.swift in Sources */,
+				A534BF6D221685B80018ED28 /* AutoViewController.swift in Sources */,
 				A534BF5822167E080018ED28 /* AppDelegate.swift in Sources */,
 				A534BF6022167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld in Sources */,
 			);
