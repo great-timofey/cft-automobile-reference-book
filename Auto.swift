@@ -8,6 +8,7 @@
 
 import Foundation
 
+@dynamicMemberLookup
 class Auto {
   var id: UUID
   var model: String
@@ -21,7 +22,7 @@ class Auto {
        _ bodyStyle: String,
        _ nameOfClass: String,
        _ productionDate: Int) {
-
+    
     self.id = UUID()
     self.model = model
     self.manufacturer = manufacturer
@@ -29,4 +30,29 @@ class Auto {
     self.nameOfClass = nameOfClass
     self.productionDate = productionDate
   }
+  
+  subscript(dynamicMember member: String) -> Any? {
+    get {
+      let properties: [String: Any] = [
+        "id": id,
+        "model": model,
+        "manufacturer": manufacturer,
+        "bodyStyle": bodyStyle,
+        "nameOfClass": nameOfClass,
+        "productionDate": productionDate
+      ]
+      return properties[member, default: ""]
+    }
+    set {
+      if let value = newValue {
+        print("trying to change - \(member) : \(value)")
+        updateProperty(withName: member, withValue: value)
+      }
+    }
+  }
+  
+  func updateProperty(withName propertyName: String, withValue value: Any) {
+    self.propertyName = value
+  }
+  
 }

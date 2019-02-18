@@ -10,6 +10,21 @@ import Foundation
 
 class Autos {
   var autos: [Auto] = []
+  var length: Int {
+    get {
+      return autos.count
+    }
+  }
+  
+  init() {
+    addAuto(withModel: "911", withManufacturer: "Porshe", withBodyStyle: "Cupe", withNameOfClass: "Race Car", withProductionDate: 1990)
+    updateAuto(atIndex: 0, withParams: ["model": "10"])
+  }
+  
+  func getAuto(atIndex index: Int) -> Auto? {
+    assert(index < autos.count, "You're trying to get auto at unexisted index")
+    return autos[index]
+  }
   
   func addAuto(withModel model: String,
                withManufacturer manufacturer: String,
@@ -26,10 +41,11 @@ class Autos {
   
   func updateAuto(atIndex index: Int,
                   withParams params: [String: Any]) {
-    let updatingAuto = autos[index]
+    var updatingAuto = autos[index]
     for param in params {
-      let 
-      updatingAuto.param
+      let (key, value) = param
+      updatingAuto.key = value
+      //print("\(key) : \(value)")
     }
   }
 }

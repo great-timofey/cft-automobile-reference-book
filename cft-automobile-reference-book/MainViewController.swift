@@ -11,7 +11,7 @@ import UIKit
 class MainViewController: UITableViewController {
   @IBOutlet weak var autosTableView: UITableView!
   
-  private var autos = ["Audi", "Mercedes"]
+  private var autos = Autos()
   
   let cellReuseIdentifier = "AutoCell"
   
@@ -22,13 +22,15 @@ class MainViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return autos.count
+    return autos.length
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = autosTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
     
-    cell.textLabel?.text = autos[indexPath.row]
+    if let auto = autos.getAuto(atIndex: indexPath.row) {
+      cell.textLabel?.text = auto.model as String
+    }
     return cell    
   }
   
