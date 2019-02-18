@@ -163,6 +163,11 @@
                     <navigationItem key="navigationItem" id="mN1-7q-3Tv"/>
                     <connections>
                         <outlet property="header" destination="mN1-7q-3Tv" id="hMH-Wx-iSl"/>
+                        <outlet property="manufacturerTextField" destination="T35-Pz-kKO" id="ldX-55-I2b"/>
+                        <outlet property="modelTextField" destination="TG2-P6-l0u" id="h3T-J7-RwX"/>
+                        <outlet property="nameOfClassPickerView" destination="X0h-iy-brt" id="EUW-TI-ATf"/>
+                        <outlet property="productionYearPickerView" destination="Jdh-xI-c4y" id="pIK-6S-u7L"/>
+                        <outlet property="typeOfBodyPickerView" destination="v1o-sQ-Uzy" id="505-Ts-eni"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7O4-nk-qOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -171,6 +176,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uxp-Cl-nVT"/>
+        <segue reference="lqj-Ll-ebr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -44,8 +44,8 @@ class MainViewController: UITableViewController {
     switch segue.identifier {
     case "showAuto":
       let cell = sender as! UITableViewCell
-      if let vc = segue.destination as? AutoViewController {
-        vc.header.title = cell.textLabel?.text
+      if let vc = segue.destination as? AutoViewController, let index = autosTableView.indexPath(for: cell) {
+        vc.auto = autos.getAuto(atIndex: index.row)!
       }
     case "createAuto":
       if let vc = segue.destination as? AutoViewController {

@@ -46,8 +46,6 @@
 		A534BF4B22167E080018ED28 = {
 			isa = PBXGroup;
 			children = (
-				A534BF6E2216B4870018ED28 /* Autos.swift */,
-				A534BF702216B4CB0018ED28 /* Auto.swift */,
 				A534BF5622167E080018ED28 /* cft-automobile-reference-book */,
 				A534BF5522167E080018ED28 /* Products */,
 			);
@@ -64,6 +62,8 @@
 		A534BF5622167E080018ED28 /* cft-automobile-reference-book */ = {
 			isa = PBXGroup;
 			children = (
+				A534BF6E2216B4870018ED28 /* Autos.swift */,
+				A534BF702216B4CB0018ED28 /* Auto.swift */,
 				A534BF5722167E080018ED28 /* AppDelegate.swift */,
 				A534BF5922167E080018ED28 /* MainViewController.swift */,
 				A534BF5B22167E080018ED28 /* Main.storyboard */,

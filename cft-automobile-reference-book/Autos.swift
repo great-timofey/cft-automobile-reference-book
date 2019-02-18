@@ -17,8 +17,11 @@ class Autos {
   }
   
   init() {
-    addAuto(withModel: "911", withManufacturer: "Porshe", withBodyStyle: "Cupe", withNameOfClass: "Race Car", withProductionDate: 1990)
-    updateAuto(atIndex: 0, withParams: ["model": "10"])
+    addAuto(withModel: "911",
+            withManufacturer: "Porshe",
+            withBodyStyle: "Cupe",
+            withNameOfClass: "Race Car",
+            withProductionDate: 1990)
   }
   
   func getAuto(atIndex index: Int) -> Auto? {
@@ -41,11 +44,11 @@ class Autos {
   
   func updateAuto(atIndex index: Int,
                   withParams params: [String: Any]) {
-    var updatingAuto = autos[index]
+    assert(index < autos.count, "You're trying to update auto at unexisted index")
+    let updatingAuto = autos[index]
     for param in params {
       let (key, value) = param
-      updatingAuto.key = value
-      //print("\(key) : \(value)")
+      updatingAuto.setProperty(withName: key, withValue: value)
     }
   }
 }
