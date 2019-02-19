@@ -37,6 +37,7 @@ class AutoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     self.typeOfBodyPickerView.dataSource = self
     self.nameOfClassPickerView.delegate = self
     self.nameOfClassPickerView.dataSource = self
+    setRightBarButton()
     
     if let innerAuto = auto {
       header.title = "\(innerAuto.manufacturer) \(innerAuto.model)"
@@ -56,6 +57,26 @@ class AutoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     return pickerView == typeOfBodyPickerView ? typesOfBody[row] : namesOfClass[row]
+  }
+  
+  func setRightBarButton() {
+    rightBarButton.target = self
+    if auto != nil {
+      rightBarButton.title = "Delete"
+      rightBarButton.tintColor = UIColor.red
+      rightBarButton.action = #selector(onDeleteAuto)
+    } else {
+      rightBarButton.title = "Save"
+      rightBarButton.action = #selector(onSaveAuto)
+    }
+  }
+  
+  @objc func onSaveAuto() {
+    print("on save auto")
+  }
+  
+  @objc func onDeleteAuto() {
+    print("on delete auto")
   }
   
 }
