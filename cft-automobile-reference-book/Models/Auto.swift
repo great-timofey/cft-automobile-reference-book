@@ -14,13 +14,13 @@ class Auto {
   var manufacturer: String
   var bodyStyle: String
   var nameOfClass: String
-  var productionDate: Int
+  var productionDate: Date
   
   init(_ model: String,
        _ manufacturer: String,
        _ bodyStyle: String,
        _ nameOfClass: String,
-       _ productionDate: Int) {
+       _ productionDate: Date) {
     
     self.id = UUID()
     self.model = model
@@ -41,7 +41,7 @@ class Auto {
     case "bodyStyle":
       setBodyStyle(value as! String)
     case "productionDate":
-      setProductionDate(value as! Int)
+      setProductionDate(value as! Date)
     default:
       return
     }
@@ -63,7 +63,7 @@ class Auto {
     self.nameOfClass = nameOfClass
   }
   
-  private func setProductionDate(_ productionDate: Int) {
+  private func setProductionDate(_ productionDate: Date) {
     self.productionDate = productionDate
   }
 }

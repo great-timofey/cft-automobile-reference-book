@@ -29,7 +29,7 @@ class MainViewController: UITableViewController {
     let cell = autosTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
     
     if let auto = autos.getAuto(atIndex: indexPath.row) {
-      cell.textLabel?.text = auto.model as String
+      cell.textLabel?.text = "\(auto.manufacturer) \(auto.model)"
     }
     return cell    
   }

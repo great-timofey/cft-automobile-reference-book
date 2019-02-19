@@ -19,9 +19,9 @@ class Autos {
   init() {
     addAuto(withModel: "911",
             withManufacturer: "Porshe",
-            withBodyStyle: "Cupe",
-            withNameOfClass: "Race Car",
-            withProductionDate: 1990)
+            withBodyStyle: "Cabriolet",
+            withNameOfClass: "Compact",
+            withProductionDate: Date())
   }
   
   func getAuto(atIndex index: Int) -> Auto? {
@@ -33,7 +33,7 @@ class Autos {
                withManufacturer manufacturer: String,
                withBodyStyle bodyStyle: String,
                withNameOfClass nameOfClass: String,
-               withProductionDate productionDate: Int) {
+               withProductionDate productionDate: Date) {
     let auto = Auto(model, manufacturer, bodyStyle, nameOfClass, productionDate)
     autos.append(auto)
   }
