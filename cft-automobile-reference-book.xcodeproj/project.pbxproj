@@ -62,8 +62,7 @@
 		A534BF5622167E080018ED28 /* cft-automobile-reference-book */ = {
 			isa = PBXGroup;
 			children = (
-				A534BF6E2216B4870018ED28 /* Autos.swift */,
-				A534BF702216B4CB0018ED28 /* Auto.swift */,
+				CEB31F0C221BA159000E58E5 /* Models */,
 				A534BF5722167E080018ED28 /* AppDelegate.swift */,
 				A534BF5922167E080018ED28 /* MainViewController.swift */,
 				A534BF5B22167E080018ED28 /* Main.storyboard */,
@@ -74,6 +73,15 @@
 				A534BF5E22167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld */,
 			);
 			path = "cft-automobile-reference-book";
+			sourceTree = "<group>";
+		};
+		CEB31F0C221BA159000E58E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A534BF6E2216B4870018ED28 /* Autos.swift */,
+				A534BF702216B4CB0018ED28 /* Auto.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
