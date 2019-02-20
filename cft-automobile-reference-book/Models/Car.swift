@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Auto {
+class Car {
   var id: UUID
   var model: String
   var manufacturer: String

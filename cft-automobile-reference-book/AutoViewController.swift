@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class AutoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   
@@ -18,10 +19,6 @@ class AutoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
   @IBOutlet weak var typeOfBodyPickerView: UIPickerView!
   @IBOutlet weak var nameOfClassPickerView: UIPickerView!
   @IBOutlet weak var rightBarButton: UIBarButtonItem!
-  
-  var chosenTypeOfBody: String?
-  var chosenNameOfClass: String?
-  var chosenProductionDate: Date?
   
   let typesOfBody = ["Hatchback",
                      "Sedan",
@@ -34,7 +31,17 @@ class AutoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                      "Midsize",
                      "Large"]
   
-  var auto: Auto?
+  var auto: Car?
+  
+  var chosenTypeOfBody: String {
+    return typesOfBody[typeOfBodyPickerView.selectedRow(inComponent: 0)]
+  }
+  var chosenNameOfClass: String {
+    return namesOfClass[nameOfClassPickerView.selectedRow(inComponent: 0)]
+  }
+  var chosenProductionDate: Date {
+    return productionDatePickerView.date
+  }
   
   override func viewDidLoad() {
     self.typeOfBodyPickerView.delegate = self
@@ -68,18 +75,6 @@ class AutoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     return pickerView == typeOfBodyPickerView ? typesOfBody[row] : namesOfClass[row]
   }
   
-  func pickerView(_ pickerView: UIPickerView,
-                  didSelectRow row: Int,
-                  inComponent component: Int) {
-    if pickerView == typeOfBodyPickerView {
-      chosenTypeOfBody = typesOfBody[row]
-    } else if pickerView == nameOfClassPickerView {
-      chosenNameOfClass = namesOfClass[row]
-    }
-  }
-  
-  
-  
   func setRightBarButton() {
     rightBarButton.target = self
     if auto != nil {
@@ -93,16 +88,38 @@ class AutoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
   }
   
   @objc func onSaveAuto() {
-    if let innerAuto = auto,
-      let modelText = modelTextField.text,
-      let manufacturerText = manufacturerTextField.text,
-      chosenTypeOfBody != nil,
-      chosenNameOfClass != nil {
-      innerAuto.bodyStyle = chosenTypeOfBody!
-      innerAuto.nameOfClass = chosenNameOfClass!
-      innerAuto.productionDate = productionDatePickerView.date
-      innerAuto.model = modelText
-      innerAuto.manufacturer = manufacturerText
+    if let modelText = modelTextField.text,
+      let manufacturerText = manufacturerTextField.text {
+      
+      guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else {
+          return
+      }
+      
+      let managedContext =
+        appDelegate.persistentContainer.viewContext
+      
+      let entity =
+        NSEntityDescription.entity(forEntityName: "Auto",
+                                   in: managedContext)!
+      
+      let car = NSManagedObject(entity: entity,
+                                   insertInto: managedContext)
+      
+      let id = UUID()
+      car.setValue(modelText, forKeyPath: "model")
+      car.setValue(id, forKeyPath: "id")
+      car.setValue(manufacturerText, forKeyPath: "manufacturer")
+      car.setValue(chosenTypeOfBody, forKeyPath: "body_style")
+      car.setValue(chosenNameOfClass, forKeyPath: "name_of_class")
+      car.setValue(chosenProductionDate, forKeyPath: "production_date")
+      
+      do {
+        managedContext.insert(car)
+        try managedContext.save()
+      } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+      }
       navigationController?.popViewController(animated: true)
     } else {
       let alertController = UIAlertController(title: "Error", message:

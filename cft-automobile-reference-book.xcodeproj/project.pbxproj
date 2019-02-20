@@ -15,7 +15,7 @@
 		A534BF6522167E090018ED28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A534BF6322167E090018ED28 /* LaunchScreen.storyboard */; };
 		A534BF6D221685B80018ED28 /* AutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF6C221685B80018ED28 /* AutoViewController.swift */; };
 		A534BF6F2216B4870018ED28 /* Autos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF6E2216B4870018ED28 /* Autos.swift */; };
-		A534BF712216B4CB0018ED28 /* Auto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF702216B4CB0018ED28 /* Auto.swift */; };
+		A534BF712216B4CB0018ED28 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF702216B4CB0018ED28 /* Car.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		A534BF6622167E090018ED28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A534BF6C221685B80018ED28 /* AutoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoViewController.swift; sourceTree = "<group>"; };
 		A534BF6E2216B4870018ED28 /* Autos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autos.swift; sourceTree = "<group>"; };
-		A534BF702216B4CB0018ED28 /* Auto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auto.swift; sourceTree = "<group>"; };
+		A534BF702216B4CB0018ED28 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				A534BF6E2216B4870018ED28 /* Autos.swift */,
-				A534BF702216B4CB0018ED28 /* Auto.swift */,
+				A534BF702216B4CB0018ED28 /* Car.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,7 +157,7 @@
 			files = (
 				A534BF6F2216B4870018ED28 /* Autos.swift in Sources */,
 				A534BF5A22167E080018ED28 /* MainViewController.swift in Sources */,
-				A534BF712216B4CB0018ED28 /* Auto.swift in Sources */,
+				A534BF712216B4CB0018ED28 /* Car.swift in Sources */,
 				A534BF6D221685B80018ED28 /* AutoViewController.swift in Sources */,
 				A534BF5822167E080018ED28 /* AppDelegate.swift in Sources */,
 				A534BF6022167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld in Sources */,
