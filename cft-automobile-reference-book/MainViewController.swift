@@ -9,25 +9,13 @@
 import UIKit
 import CoreData
 
-class MainViewController: UITableViewController {
+class MainViewController: UITableViewController, NSFetchedResultsControllerDelegate {
   @IBOutlet weak var autosTableView: UITableView!
   
-  private var cars: [NSManagedObject] = []
-  
-  let cellReuseIdentifier = "AutoCell"
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    autosTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    print("appear")
-    
+  let fetchController: NSFetchedResultsController<NSManagedObject>? = {
     guard let appDelegate =
       UIApplication.shared.delegate as? AppDelegate else {
-        return
+        return nil
     }
     
     let managedContext =
@@ -36,25 +24,69 @@ class MainViewController: UITableViewController {
     let fetchRequest =
       NSFetchRequest<NSManagedObject>(entityName: "Auto")
     
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "manufacturer", ascending: true)]
+    
+    let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                managedObjectContext: managedContext,
+                                                sectionNameKeyPath: nil,
+                                                cacheName: nil)
+    
+    return controller
+  }()
+  
+  let cellReuseIdentifier = "AutoCell"
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    fetchController!.delegate = self
+    autosTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+    
     do {
-      print(1)
-      cars = try managedContext.fetch(fetchRequest)
+      try fetchController!.performFetch()
     } catch let error as NSError {
       print("Could not fetch. \(error), \(error.userInfo)")
     }
   }
   
+  override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  override func tableView(_ tableView: UITableView,
+                          commit editingStyle: UITableViewCell.EditingStyle,
+                          forRowAt indexPath: IndexPath) {
+    if (editingStyle == .delete) {
+      guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else {
+          return
+      }
+      
+      let managedContext =
+        appDelegate.persistentContainer.viewContext
+      
+      do {
+        let auto = fetchController!.object(at: indexPath) as! Auto
+        managedContext.delete(auto)
+        try managedContext.save()
+      } catch let error {
+        print(error)
+      }
+    }
+  }
+  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return cars.count
+    if let sections = fetchController!.sections {
+      return sections[section].numberOfObjects
+    } else {
+      return 0
+    }
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = autosTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
     
-    let car = cars[indexPath.row]
-    let model = car.value(forKeyPath: "model") as! String
-    let manufacturer = car.value(forKeyPath: "manufacturer") as! String
-    cell.textLabel?.text = "\(manufacturer) \(model)"
+    let auto = fetchController!.object(at: indexPath) as! Auto
+    cell.textLabel?.text = getNameForCell(withAuto: auto)
     
     return cell
   }
@@ -66,19 +98,60 @@ class MainViewController: UITableViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    switch segue.identifier {
-    case "showAuto":
+    if segue.identifier == "showAuto" {
       let cell = sender as! UITableViewCell
-      if let vc = segue.destination as? AutoViewController, let index = autosTableView.indexPath(for: cell) {
-//        vc.auto = autos.getCar(atIndex: index.row)!
+      if let vc = segue.destination as? AutoViewController,
+        let indexPath = autosTableView.indexPath(for: cell) {
+        let auto = fetchController!.object(at: indexPath) as! Auto
+        vc.passedAuto = auto
       }
-    case "createAuto":
-      if let vc = segue.destination as? AutoViewController {
-        vc.header.title = "Add New Auto"
+    }
+  }
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                  didChange anObject: Any,
+                  at indexPath: IndexPath?,
+                  for type: NSFetchedResultsChangeType,
+                  newIndexPath: IndexPath?) {
+    
+    switch type {
+    case .insert:
+      if let indexPath = newIndexPath {
+        tableView.insertRows(at: [indexPath], with: .automatic)
+      }
+    case .update:
+      if let indexPath = indexPath {
+        let auto = fetchController!.object(at: indexPath) as! Auto
+        let cell = tableView.cellForRow(at: indexPath)
+        cell!.textLabel?.text = getNameForCell(withAuto: auto)
+      }
+    case .move:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+      }
+      if let newIndexPath = newIndexPath {
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+      }
+    case .delete:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .automatic)
       }
     default:
-      break
+      return
     }
+    
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+  }
+  
+  func getNameForCell(withAuto auto: Auto) -> String {
+    return "\(auto.manufacturer!) \(auto.model!)"
   }
   
 }

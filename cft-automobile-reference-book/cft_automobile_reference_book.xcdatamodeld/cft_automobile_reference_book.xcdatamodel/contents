@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Auto" representedClassName="Auto" syncable="YES" codeGenerationType="class">
-        <attribute name="body_style" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Auto" representedClassName="Auto" syncable="YES">
+        <attribute name="bodyStyle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name_of_class" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="production_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="productionDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Auto" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Auto" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

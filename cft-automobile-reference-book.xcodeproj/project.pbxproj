@@ -14,8 +14,10 @@
 		A534BF6222167E090018ED28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A534BF6122167E090018ED28 /* Assets.xcassets */; };
 		A534BF6522167E090018ED28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A534BF6322167E090018ED28 /* LaunchScreen.storyboard */; };
 		A534BF6D221685B80018ED28 /* AutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF6C221685B80018ED28 /* AutoViewController.swift */; };
-		A534BF6F2216B4870018ED28 /* Autos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF6E2216B4870018ED28 /* Autos.swift */; };
-		A534BF712216B4CB0018ED28 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534BF702216B4CB0018ED28 /* Car.swift */; };
+		CE55B9CA221D35A5005A748E /* Auto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55B9C8221D35A5005A748E /* Auto+CoreDataClass.swift */; };
+		CE55B9CB221D35A5005A748E /* Auto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55B9C9221D35A5005A748E /* Auto+CoreDataProperties.swift */; };
+		CEE299BE221D543F0074D2CB /* BodyStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE299BD221D543F0074D2CB /* BodyStyles.swift */; };
+		CEE299C0221D544B0074D2CB /* Classnames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE299BF221D544B0074D2CB /* Classnames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +30,10 @@
 		A534BF6422167E090018ED28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A534BF6622167E090018ED28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A534BF6C221685B80018ED28 /* AutoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoViewController.swift; sourceTree = "<group>"; };
-		A534BF6E2216B4870018ED28 /* Autos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autos.swift; sourceTree = "<group>"; };
-		A534BF702216B4CB0018ED28 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		CE55B9C8221D35A5005A748E /* Auto+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auto+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE55B9C9221D35A5005A748E /* Auto+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auto+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEE299BD221D543F0074D2CB /* BodyStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyStyles.swift; sourceTree = "<group>"; };
+		CEE299BF221D544B0074D2CB /* Classnames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classnames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,8 @@
 		A534BF5622167E080018ED28 /* cft-automobile-reference-book */ = {
 			isa = PBXGroup;
 			children = (
-				CEB31F0C221BA159000E58E5 /* Models */,
+				CE55B9C8221D35A5005A748E /* Auto+CoreDataClass.swift */,
+				CE55B9C9221D35A5005A748E /* Auto+CoreDataProperties.swift */,
 				A534BF5722167E080018ED28 /* AppDelegate.swift */,
 				A534BF5922167E080018ED28 /* MainViewController.swift */,
 				A534BF5B22167E080018ED28 /* Main.storyboard */,
@@ -71,17 +76,10 @@
 				A534BF6C221685B80018ED28 /* AutoViewController.swift */,
 				A534BF6622167E090018ED28 /* Info.plist */,
 				A534BF5E22167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld */,
+				CEE299BD221D543F0074D2CB /* BodyStyles.swift */,
+				CEE299BF221D544B0074D2CB /* Classnames.swift */,
 			);
 			path = "cft-automobile-reference-book";
-			sourceTree = "<group>";
-		};
-		CEB31F0C221BA159000E58E5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A534BF6E2216B4870018ED28 /* Autos.swift */,
-				A534BF702216B4CB0018ED28 /* Car.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,12 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A534BF6F2216B4870018ED28 /* Autos.swift in Sources */,
 				A534BF5A22167E080018ED28 /* MainViewController.swift in Sources */,
-				A534BF712216B4CB0018ED28 /* Car.swift in Sources */,
 				A534BF6D221685B80018ED28 /* AutoViewController.swift in Sources */,
 				A534BF5822167E080018ED28 /* AppDelegate.swift in Sources */,
+				CE55B9CA221D35A5005A748E /* Auto+CoreDataClass.swift in Sources */,
+				CE55B9CB221D35A5005A748E /* Auto+CoreDataProperties.swift in Sources */,
+				CEE299C0221D544B0074D2CB /* Classnames.swift in Sources */,
 				A534BF6022167E080018ED28 /* cft_automobile_reference_book.xcdatamodeld in Sources */,
+				CEE299BE221D543F0074D2CB /* BodyStyles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

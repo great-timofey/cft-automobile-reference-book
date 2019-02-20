@@ -161,7 +161,7 @@
                         <viewLayoutGuide key="safeArea" id="b8x-kT-cE5"/>
                     </view>
                     <navigationItem key="navigationItem" id="mN1-7q-3Tv">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="cae-dl-PZO"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Yo8-Bs-XEZ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="header" destination="mN1-7q-3Tv" id="hMH-Wx-iSl"/>
@@ -169,7 +169,7 @@
                         <outlet property="modelTextField" destination="TG2-P6-l0u" id="h3T-J7-RwX"/>
                         <outlet property="nameOfClassPickerView" destination="X0h-iy-brt" id="EUW-TI-ATf"/>
                         <outlet property="productionDatePickerView" destination="Jdh-xI-c4y" id="pIK-6S-u7L"/>
-                        <outlet property="rightBarButton" destination="cae-dl-PZO" id="EzH-AB-VWl"/>
+                        <outlet property="saveButtonItem" destination="Yo8-Bs-XEZ" id="OR6-Ui-JB9"/>
                         <outlet property="typeOfBodyPickerView" destination="v1o-sQ-Uzy" id="505-Ts-eni"/>
                     </connections>
                 </viewController>
