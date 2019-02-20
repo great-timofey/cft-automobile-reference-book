@@ -17,36 +17,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    let context = persistentContainer.viewContext
-    let firstItemProductionDate = "2008-02-02"
-    let secondItemProductionDate = "2002-02-02"
-    let thirdItemProductionDate = "1992-02-02"
+    let defaults = UserDefaults.standard
+    let isAlreadyLanchedKey = "isAlreadyLaunchedBefore"
     
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-mm-dd"
-    
-    let firstItem = Auto(context: context)
-    firstItem.model = "A8"
-    firstItem.manufacturer = "Audi"
-    firstItem.bodyStyle = BodyStyles.coupe.rawValue
-    firstItem.classname = Classnames.large.rawValue
-    firstItem.productionDate = dateFormatter.date(from: firstItemProductionDate)! as NSDate
-    
-    let secondItem = Auto(context: context)
-    secondItem.model = "M3"
-    secondItem.manufacturer = "BMW"
-    secondItem.bodyStyle = BodyStyles.sedan.rawValue
-    secondItem.classname = Classnames.compact.rawValue
-    secondItem.productionDate = dateFormatter.date(from: secondItemProductionDate)! as NSDate
-    
-    let thirdItem = Auto(context: context)
-    thirdItem.model = "AMG 30"
-    thirdItem.manufacturer = "Mercedes"
-    thirdItem.bodyStyle = BodyStyles.hatchback.rawValue
-    thirdItem.classname = Classnames.midsize.rawValue
-    thirdItem.productionDate = dateFormatter.date(from: thirdItemProductionDate)! as NSDate
-    
-    saveContext()
+    if defaults.string(forKey: isAlreadyLanchedKey) == nil {
+      let context = persistentContainer.viewContext
+      let firstItemProductionDate = "2008-02-02"
+      let secondItemProductionDate = "2002-02-02"
+      let thirdItemProductionDate = "1992-02-02"
+      
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy-mm-dd"
+      
+      let firstItem = Auto(context: context)
+      firstItem.model = "A8"
+      firstItem.manufacturer = "Audi"
+      firstItem.bodyStyle = BodyStyles.coupe.rawValue
+      firstItem.classname = Classnames.large.rawValue
+      firstItem.productionDate = dateFormatter.date(from: firstItemProductionDate)! as NSDate
+      
+      let secondItem = Auto(context: context)
+      secondItem.model = "M3"
+      secondItem.manufacturer = "BMW"
+      secondItem.bodyStyle = BodyStyles.sedan.rawValue
+      secondItem.classname = Classnames.compact.rawValue
+      secondItem.productionDate = dateFormatter.date(from: secondItemProductionDate)! as NSDate
+      
+      let thirdItem = Auto(context: context)
+      thirdItem.model = "AMG 30"
+      thirdItem.manufacturer = "Mercedes"
+      thirdItem.bodyStyle = BodyStyles.hatchback.rawValue
+      thirdItem.classname = Classnames.midsize.rawValue
+      thirdItem.productionDate = dateFormatter.date(from: thirdItemProductionDate)! as NSDate
+      
+      saveContext()
+      defaults.set(true, forKey: isAlreadyLanchedKey)
+    }
     
     return true
   }
